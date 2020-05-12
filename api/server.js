@@ -1,14 +1,17 @@
 const express = require("express");
 
-const db = require("../data/dbConfig.js");
+const AccountRouter = require('../accountRouter');
+
+// const db = require("./data/dbConfig.js");
 
 const server = express();
 
 server.use(express.json());
 
+server.use('/api/accounts', logger, AccountRouter)
 
 server.get("/", (req, res) => {
-    res.status(200).json({ api: "up" });
+    res.send("<h3>Node Database Project</h3>");
 });
 
 function logger(req, res, next) {
